@@ -41,14 +41,19 @@ function getUserInfo() {
 function renderAvator(user) {
     var name = user.nickname || user.username;
     $('#welcome').html('欢迎&nbsp;' + name);
+    console.log(user.user_pic)
     if (user.user_pic !== null) {
         //获取图片头像
-        $('.layui-nav-img').attr('src', user.user_pic).show();
+        $('.layui-nav-img')
+            .attr('src', user.user_pic)
+            .show();
         $('.text-avatar').hide();
+    } else {
+        $('.layui-nav-img').hide();
+        var first = name[0].toUpperCase();
+        $('.text-avatar').html(first).show();
+
     }
-    $('.layui-nav-img').hide();
-    var first = name[0].toUpperCase();
-    $('.text-avatar').html(first).show();
 
 
 
